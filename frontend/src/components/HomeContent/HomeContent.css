@@ -1,0 +1,123 @@
+#layout-container {
+    position: relative;
+    display: grid;
+    grid-template-areas: "content"
+}
+#content {
+    grid-area: content;
+    position: relative;
+    height: calc(100vh - 77px);
+}
+.grid-container {
+    display: grid;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+    grid-gap: 20px;
+}
+.grid > .grid-card {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+    padding: 10px;
+}
+.grid-container .grid-card:first-child {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+.grid-container .grid-card {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+ .grid-card .card-title {
+    font-family: Roboto;
+    font-size: 11px;
+    margin-left: 10px;
+    color: #2C3E50;
+    letter-spacing: 3px;
+}
+.grid-card {
+    padding: 10px;
+}
+.colour-card {
+    margin-top: 5px;
+    border-radius: 10px;
+}
+.blue {
+    background-color: #00A8FF;
+    -webkit-box-shadow: 5px 5px 0px 1px rgba(0,151,230,1);
+    -moz-box-shadow: 5px 5px 0px 1px rgba(0,151,230,1);
+    box-shadow: 5px 5px 0px 1px rgba(0,151,230,1);
+}
+.orange {
+    background-color: #FBC531;
+    -webkit-box-shadow: 5px 5px 0px 1px #E1B12C;
+    -moz-box-shadow: 5px 5px 0px 1px #E1B12C;
+    box-shadow: 5px 5px 0px 1px #E1B12C;
+}
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+.content-container {
+    width: 75%;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+}
+.wind-card {
+    margin-bottom: 10px;
+    height: 80px;
+    padding: 0px 40px 0px 40px;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0); 
+    border-radius: 8px;
+    padding-right: 5px;
+}
+   
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding-right: 5px;
+}
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.form-card-body {
+    font-family: Roboto;
+    height: 100%
+}
+
+.form-card-body-left {
+    float: left;
+    width: 50%;
+    height: inherit;
+}
+
+.form-card-body-right {
+    float: right;
+    width: 50%;
+    height: inherit;
+}
+
+.form-card-body-left h3 {
+    font-size: 18px;
+    display: block;
+    margin: 0;
+}
+.form-card-body-left span {
+    font-size: 16px;
+    display: block;
+}

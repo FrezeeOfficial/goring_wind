@@ -21,7 +21,6 @@ class App extends Component {
     this.setState({user: {}});
   }
 
-
   render () {
     return (
       <userContext.Provider value={this.state.user}>

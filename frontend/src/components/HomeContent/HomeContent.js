@@ -62,7 +62,7 @@ class HomeContent extends Component {
                                 </div>
                             </div>
                             <div className="grid-card">
-                                <div className="full-size">
+                                <div className="left-padding full-size">
                                     <span className="card-title">WIND</span>
                                     <div className="full-size">
                                         {this.state.wind.map((host, index) => (
@@ -72,7 +72,7 @@ class HomeContent extends Component {
                                 </div>
                             </div>
                             <div className="grid-card">
-                               <div className="full-size">
+                               <div className="left-padding full-size">
                                     <span className="card-title">TIDE</span>
                                     <div className="colour-card orange full-size">
                                         

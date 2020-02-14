@@ -5,14 +5,40 @@ import WindCard from './WindCard';
 class HomeContent extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            wind: []
-        }
+
+        const wind = [];
+
+        wind.push({
+            name: "LOCAL",
+            location: "Goring",
+            distance: "0",
+            speed: "40",
+            direction: "WSW"
+        });   
+
+        wind.push({
+            name: "GORING",
+            location: "Goring",
+            distance: "0.8",
+            speed: "40",
+            direction: "WSW"
+        });
+
+        wind.push({
+            name: "LANCING",
+            location: "Lancing",
+            distance: "6.6",
+            speed: "39",
+            direction: "WSW"
+        });
+
+    this.state = { wind };
+
     }
 
     componentDidMount() {
-        var data = {name: "LOCAL", location: "Goring", distance: "0", speed: "40", direction: "WSW"};
-        this.setState({wind: data});
+        // var data = [{name: "LOCAL", location: "Goring", distance: "0", speed: "40", direction: "WSW"},{name: "LOCAL", location: "Goring", distance: "0", speed: "40", direction: "WSW"}] ;
+        // this.setState({wind: data});
 
         // fetch('http://jsonplaceholder.typicode.com/users')
         // .then(res => res.json())
@@ -39,7 +65,9 @@ class HomeContent extends Component {
                                 <div className="full-size">
                                     <span className="card-title">WIND</span>
                                     <div className="full-size">
-                                      <WindCard StationName={this.state.wind.name} StationLocation={this.state.wind.location} StationDistance={this.state.wind.distance} CurrentSpeed={this.state.wind.speed} Direction={this.state.wind.direction}/>
+                                        {this.state.wind.map((host, index) => (
+                                             <WindCard StationName={host.name} StationLocation={host.location} StationDistance={host.distance} CurrentSpeed={host.speed} Direction={host.direction}/>
+                                        ))}
                                     </div>
                                 </div>
                             </div>

@@ -1,19 +1,29 @@
 const app = module.exports = require('express')();
 var session = require('express-session');
 
-app.use(session({
-    key: 'user_sid',
-    secret: 'somerandonstuffs',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 600000
-    }
-}));
+var tokens = [];
 
-app.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');        
+app.all("*", (req, res, next) => {
+    if (req.body.token == null || req.body.token == undefined) {
+        res.status(401).send({res: "no auth token was provided, as such access have been terminated"})
     }
-    next();
-});
+
+    if (checkToken(req.body.token)) {
+        next();
+    } else {
+        res.status(401).send({res: "invalid token, as such access have been terminated"})
+        res.end();
+    }
+})
+
+
+function checkToken(token) {
+    var accepted = false;
+
+    for (var i = 0; i < tokens.length; i++) {
+        if (tokens[i].value == token) {
+            accepted = true;
+        }
+    }
+    return accepted;
+}

@@ -6,6 +6,9 @@ class HomeContent extends Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            wind: []
+        }
     }
 
     componentDidMount() {
@@ -16,15 +19,10 @@ class HomeContent extends Component {
         xhr.onload = () => {
             if (xhr.status == 200) {
                 var data = JSON.parse(xhr.response);
+                var data = data.data;
 
-                for (var i = 0; i < data.data.length; i++) {
-                    wind.push({
-                        name: data.data[i].name,
-                        location:  data.data[i].location,
-                        distance:  data.data[i].distance,
-                        speed:  data.data[i].speed,
-                        direction:  data.data[i].direction
-                    });
+                for (var i = 0; i < data.length; i++) {
+                    this.state.wind.push(data[i]);
                 }
 
             } else {
@@ -32,11 +30,11 @@ class HomeContent extends Component {
             }
         };
 
-        xhr.open('POST', 'http://192.168.0.100:5000/weather/getCurrent?type=wind');
+        xhr.open('POST', 'http://localhost:5000/weather/getCurrent?type=wind');
 
         xhr.send();
 
-        this.state = { wind };
+        
       }
 
     render(){

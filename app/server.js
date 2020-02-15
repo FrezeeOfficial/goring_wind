@@ -17,12 +17,13 @@ if (!config.production) {
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
+        
+        next();
     });
 }
 
 // this manages sessions
 app.use(session_manager);
-
 
 // call request logger to add event to db
 app.use(request_logger);

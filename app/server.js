@@ -23,10 +23,14 @@ if (!config.production) {
 }
 
 // this manages sessions
-app.use(session_manager);
+if (config.usetokens) {
+    app.use(session_manager);
+}
 
 // call request logger to add event to db
-app.use(request_logger);
+if (config.uselog){
+    app.use(request_logger);
+}
 
 // mount routes
 app.use(routes);

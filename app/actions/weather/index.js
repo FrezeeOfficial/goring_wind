@@ -8,7 +8,8 @@ function getCurrentWind() {
         location: "Goring",
         distance: "0.0",
         speed: "40",
-        direction: "WSW"  
+        direction: "WSW",
+        key: 0
     })
 
     data.push({
@@ -16,7 +17,8 @@ function getCurrentWind() {
         location: "Worthing",
         distance: "0.8",
         speed: "39",
-        direction: "WSW"  
+        direction: "WSW",
+        key: 1
     })
 
     data.push({
@@ -24,7 +26,8 @@ function getCurrentWind() {
         location: "Lancing",
         distance: "6.6",
         speed: "38",
-        direction: "WSW"  
+        direction: "WSW",
+        key: 2
     })
 
     return(data)

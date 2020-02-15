@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './HomeContent.css'
+
 import WindCard from './WindCard';
+
+// not used yet
+// import GenericDialog from '../../modals/genericDialog';
 
 import apiContext from '../../context/api-context';
 
@@ -8,62 +12,63 @@ import apiContext from '../../context/api-context';
 class HomeContent extends Component {
     static contextType = apiContext;
 
-    constructor(props){
-        super(props);
+constructor(props){
+    super(props);
 
-        this.state = {
-            wind: null,
-            isLoaded: null,
-            api: null
+    this.state = {
+        wind: null,
+        isLoaded: null,
         }
     }
 
-    componentDidMount() {
-        this.state.api = this.context;
-        const api = this.state.api;
+    componentDidMount() {       
+        this.getWindData();
+        setInterval(this.getWindData.bind(this), 5000);
+    }
 
-        const t_wind = [];
-        const xhr = new XMLHttpRequest();
+    getWindData() {
+    const t_wind = [];
+    const xhr = new XMLHttpRequest();
 
-        var params = {
-            token: api.token
-        } 
+    xhr.onload = () => {
+        if (xhr.status === 200) {
+            var data = JSON.parse(xhr.response);
+            data = data.res;
 
-        xhr.onload = () => {
-            if (xhr.status == 200) {
-                var data = JSON.parse(xhr.response);
-                var data = data.res;
-
-                for (var i = 0; i < data.length; i++) {
-                    t_wind.push(data[i]);
-                }
-
-            } else {
-                // failed
+            for (var i = 0; i < data.length; i++) {
+                t_wind.push({
+                    name: data[i].name,
+                    location: data[i].location,
+                    distance: data[i].distance,
+                    speed: data[i].speed,
+                    direction: data[i].direction,
+                    key: data[i].key
+                });
             }
-        };
 
-        xhr.open('POST', 'http://192.168.0.100:5000/weather/getCurrent?type=wind');
+            this.setState({
+                wind: t_wind,
+                isLoaded: true
+            });
 
-        xhr.send(JSON.stringify(params));
+        } else {
+            // failed
+        }
+    };
 
-        this.setState({
-            wind: t_wind,
-            isLoaded: true
-        });
-    
-      }
+    xhr.open('POST', 'http://192.168.0.100:5000/weather/getCurrent?type=wind');
+
+    xhr.send();
+    }
 
     render(){
-        const { wind } = this.state
-        console.log(wind)
-
         if (this.state.isLoaded) {    
+            const { wind } = this.state
 
             var Cards = (                                    
-                this.state.wind.map((host, index) => (
-                    <WindCard StationName={host[index].name} StationLocation={host.location} StationDistance={host.distance} CurrentSpeed={host.speed} Direction={host.direction}/>
-                ))
+                wind.map((row) => {
+                    return (<WindCard StationName={row.name} StationLocation={row.location} StationDistance={row.distance} CurrentSpeed={row.speed} Direction={row.direction} key={row.key}/>)
+                })
             )
 
         return (

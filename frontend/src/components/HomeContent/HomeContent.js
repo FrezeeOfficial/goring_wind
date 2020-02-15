@@ -6,46 +6,37 @@ class HomeContent extends Component {
     constructor(props){
         super(props);
 
-        const wind = [];
-
-        wind.push({
-            name: "LOCAL",
-            location: "Goring",
-            distance: "0",
-            speed: "40",
-            direction: "WSW"
-        });   
-
-        wind.push({
-            name: "GORING",
-            location: "Goring",
-            distance: "0.8",
-            speed: "40",
-            direction: "WSW"
-        });
-
-        wind.push({
-            name: "LANCING",
-            location: "Lancing",
-            distance: "6.6",
-            speed: "39",
-            direction: "WSW"
-        });
-
-    this.state = { wind };
-
     }
 
     componentDidMount() {
-        // var data = [{name: "LOCAL", location: "Goring", distance: "0", speed: "40", direction: "WSW"},{name: "LOCAL", location: "Goring", distance: "0", speed: "40", direction: "WSW"}] ;
-        // this.setState({wind: data});
+        const wind = [];
 
-        // fetch('http://jsonplaceholder.typicode.com/users')
-        // .then(res => res.json())
-        // .then((data) => {
-        //   this.setState({ wind: data })
-        // })
-        // .catch(console.log)
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                var data = JSON.parse(xhr.response);
+
+                for (var i = 0; i < data.data.length; i++) {
+                    wind.push({
+                        name: data.data[i].name,
+                        location:  data.data[i].location,
+                        distance:  data.data[i].distance,
+                        speed:  data.data[i].speed,
+                        direction:  data.data[i].direction
+                    });
+                }
+
+            } else {
+                // failed
+            }
+        };
+
+        xhr.open('POST', 'http://192.168.0.100:5000/weather/getCurrent?type=wind');
+
+        xhr.send();
+
+        this.state = { wind };
       }
 
     render(){

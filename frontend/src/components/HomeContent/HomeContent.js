@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import './HomeContent.css'
 
+import InteractiveWeather from './InteractiveWeather';
 import WindCard from './WindCard';
 
 // not used yet
 // import GenericDialog from '../../modals/genericDialog';
 
-import apiContext from '../../context/api-context';
-
-
 class HomeContent extends Component {
-    static contextType = apiContext;
 
 constructor(props){
     super(props);
@@ -42,6 +39,9 @@ constructor(props){
                     distance: data[i].distance,
                     speed: data[i].speed,
                     direction: data[i].direction,
+                    position: [
+                        data[i].lat, data[i].long
+                    ],
                     key: data[i].key
                 });
             }
@@ -63,7 +63,7 @@ constructor(props){
 
     render(){
         if (this.state.isLoaded) {    
-            const { wind } = this.state
+            var { wind } = this.state
 
             var Cards = (                                    
                 wind.map((row) => {
@@ -78,8 +78,8 @@ constructor(props){
                             <div className="grid-card">
                                 <div className="full-size">
                                     <span className="card-title">INTERACTIVE WEATHER</span>
-                                    <div className="colour-card blue full-size">
-                                        
+                                    <div className="colour-card blue pale-blue-shadow full-size">
+                                        <InteractiveWeather wind={wind} />
                                     </div>
                                 </div>
                             </div>

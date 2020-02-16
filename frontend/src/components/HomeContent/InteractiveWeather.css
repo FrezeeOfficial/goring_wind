@@ -1,0 +1,19 @@
+.leaflet-container {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+}
+
+.map-control {
+    height: auto;
+    width: auto;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.leaflet-right .leaflet-control {
+    margin-right: 0 !important;
+}
+.leaflet-top .leaflet-control {
+    margin-top: 0 !important;
+}

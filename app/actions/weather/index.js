@@ -39,7 +39,20 @@ function getCurrentWind() {
     return(data)
 }
 
+function getTide() {
+    const data = [
+        {name: 'Low', uv: 1.0},
+        {name: 'High', uv: 5.4},
+        {name: 'Low', uv: 1.3},
+        {name: 'High', uv: 5.5},
+        {name: 'Low', uv: 1.0}
+  ];
+
+  return data;
+}
+
 
 module.exports = {
-    getCurrentWind
+    getCurrentWind,
+    getTide
 }

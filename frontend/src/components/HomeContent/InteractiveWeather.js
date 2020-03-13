@@ -3,6 +3,7 @@ import './InteractiveWeather.css';
 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import Control from 'react-leaflet-control';
+const L = require('leaflet');
 
 class InteractiveWeather extends Component {
 
@@ -55,11 +56,18 @@ class InteractiveWeather extends Component {
                 
                 {this.state.markers.map((data, idx) => 
                     <Marker 
+                        icon={new L.Icon({
+                            iconUrl: require('./navigation.svg'),
+                            iconSize: new L.Point(60, 75),
+                            className: 'leaflet-div-icon'
+                        })}
                         key={`marker-${idx}`} 
                         position={data.position} 
                         data={data.all}
                         onClick={this.handleMarkerClick.bind(this)}
-                    />
+                    > 
+                    <Popup>{data.all.direction}, {data.all.speed} Kt</Popup>
+                    </Marker>
                 )}
             </Map>
         )

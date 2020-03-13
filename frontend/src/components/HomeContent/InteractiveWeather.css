@@ -17,3 +17,9 @@
 .leaflet-top .leaflet-control {
     margin-top: 0 !important;
 }
+
+.leaflet-div-icon {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    filter: drop-shadow(2px 0px 3px #666);
+}

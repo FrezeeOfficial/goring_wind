@@ -35,6 +35,6 @@ if (config.uselog){
 // mount routes
 app.use(routes);
 
-app.listen(config.port, /* config.host, */ () => {
+app.listen(process.env.PORT || config.port, /* config.host, */ () => {
     console.log(`API started on  ${config.host}:${config.port}`);
 });

@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('../config');

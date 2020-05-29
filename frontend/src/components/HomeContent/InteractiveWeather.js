@@ -66,7 +66,11 @@ class InteractiveWeather extends Component {
                         data={data.all}
                         onClick={this.handleMarkerClick.bind(this)}
                     > 
-                    <Popup>{data.all.direction}, {data.all.speed} Kt</Popup>
+                    
+                    <Popup>
+                        <a href="goringwind.uk">Website Link</a>
+                        {data.all.direction}, {data.all.speed} Kt
+                    </Popup>
                     </Marker>
                 )}
             </Map>

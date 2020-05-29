@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.1.14:5000/",
+  "proxy": "http://192.168.1.14:3000/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -25,6 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "server": "node-env-run server --exec nodemon",
+    "dev": "run-p server start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -41,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-env-run": "^3.0.2",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5"
   }
 }

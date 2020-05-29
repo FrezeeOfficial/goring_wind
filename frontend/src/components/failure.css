@@ -1,0 +1,39 @@
+.failure-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #e74c3c;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    align-items: center;
+    display: flex;
+}
+
+.float-right {
+    float: right;
+    font-weight: 300;
+}
+
+.float-left {
+    font-weight: 500;
+    float: left;
+    font-style: italic;
+}
+
+.align-middle {
+    padding-top: 2.5px;
+    align-items: center;
+}
+
+.fadein, .fadeout {
+    opacity: 0;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+.fadein {
+    opacity: 1;
+}

@@ -6,11 +6,11 @@ app.post("/getCurrent", (req, res) => {
     if (req.query.type) {
         switch (req.query.type) {
             case "wind":
-                    res.send({res: getCurrentWind()});
+                res.status(200).send({res: getCurrentWind()});
                     res.end();
                 break;
                 case "tide":
-                    res.send({res: getTide()});
+                    res.status(200).send({res: getTide()});
                     res.end();
                 break;
         }

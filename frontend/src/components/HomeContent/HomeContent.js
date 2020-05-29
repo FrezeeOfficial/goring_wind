@@ -5,6 +5,7 @@ import './HomeContent.css'
 import InteractiveWeather from './InteractiveWeather';
 import WindCard from './WindCard';
 import TideCard from './TideCard';
+import Failure from '../Failure';
 // not used yet
 // import GenericDialog from '../../modals/genericDialog';
 
@@ -16,18 +17,27 @@ constructor(props){
     this.state = {
         wind: null,
         isLoaded: null,
-        tide: null
+        tide: null,
+        failure: { 
+            display: "false",
+            message: "",
+            code: ""
+        }
         }
     }
 
+    displayError(code, message, time) {
+        this.setState({failure: {display: "true", code: code, message: message}})
+        setTimeout(() => { this.setState({failure: {display: "false"}}) }, time);
+    }
+
     componentDidMount() {  
-        
+        this.displayError("0x00", "This is alpha so it will be buggy!", 3000);
         this.getTideData();     
         this.getWindData();
 
         // auto refress wind data
         setInterval(this.getWindData.bind(this), 5000);
-
     }
 
     getWindData() {
@@ -60,10 +70,11 @@ constructor(props){
 
         } else {
             // failed
+            this.displayError("0x01", "failed to retrieve wind data", 5000);
         }
     };
 
-    xhr.open('POST', 'http://192.168.1.14:5000/weather/getCurrent?type=wind');
+    xhr.open('POST', 'http://192.168.1.3:5000/weather/getCurrent?type=wind');
 
     xhr.send();
     }
@@ -77,16 +88,20 @@ constructor(props){
                 var data = JSON.parse(xhr.response);
                 data = data.res;
     
+                console.log("tide");
+                console.log(data);
                 this.setState({
                     tide: data
                 })
     
             } else {
                 // failed
+                this.displayError("0x01", "failed to retrieve tide data", 5000);
+                console.log("tide failed");
             }
         };
     
-        xhr.open('POST', 'http://192.168.1.5:5000/weather/getCurrent?type=tide');
+        xhr.open('POST', 'http://192.168.1.3:5000/weather/getCurrent?type=tide');
     
         xhr.send();
     }
@@ -104,13 +119,14 @@ constructor(props){
 
         return (
                     <main id="layout-container">
+                        <Failure display={this.state.failure.display} code={this.state.failure.code} message={this.state.failure.message}/>
                         <div id="content">
                             <div className="grid-container content-container">
                                 <div className="grid-card">
                                     <div className="full-size">
                                         <span className="card-title">INTERACTIVE WEATHER</span>
                                         <div className="colour-card blue pale-blue-shadow full-size">
-                                            <InteractiveWeather wind={wind} />
+                                            <InteractiveWeather wind={this.state.wind} />
                                         </div>
                                     </div>
                                 </div>
@@ -126,8 +142,7 @@ constructor(props){
                                 <div className="left-padding full-size">
                                         <span className="card-title">TIDE</span>
                                         <div className="colour-card orange full-size">
-                                            {/* <TideCard tide={tide} /> */}
-                                            <span> Coming soon... </span>
+                                            { <TideCard tide={this.state.tide} /> }
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +151,15 @@ constructor(props){
                     </main>
         )
         } else {
-            return(<div>Loading...</div>)
+            return(
+              <div className="error-modal">
+                  <div className="error-modal-inner">
+                      <span className="oops-error">Oops,</span>
+                      <span>Something went wrong. Try again?</span>
+                      <button>TRY AGAIN</button>
+                  </div>
+              </div>
+            )
         }
     }
 }

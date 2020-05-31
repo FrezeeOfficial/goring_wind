@@ -32,7 +32,7 @@ constructor(props){
     }
 
     componentDidMount() {  
-        this.displayError("0x00", "This is alpha so it will be buggy!", 3000);
+        this.displayError("0x00", "Any data presented is false during the development phase of this, do not use it for justification for kitesurfing", 3000);
         this.getTideData();     
         this.getWindData();
 
@@ -56,6 +56,7 @@ constructor(props){
                     distance: data[i].distance,
                     speed: data[i].speed,
                     direction: data[i].direction,
+                    bearing: data[i].bearing,
                     position: [
                         data[i].lat, data[i].long
                     ],
@@ -112,7 +113,7 @@ constructor(props){
 
             var Cards = (                                    
                 wind.map((row) => {
-                    return (<WindCard StationName={row.name} StationLocation={row.location} StationDistance={row.distance} CurrentSpeed={row.speed} Direction={row.direction} key={row.key}/>)
+                    return (<WindCard StationName={row.name} StationLocation={row.location} StationDistance={row.distance} CurrentSpeed={row.speed} Direction={row.direction} Bearing={row.bearing} key={row.key}/>)
                 })
             )
 

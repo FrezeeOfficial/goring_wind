@@ -1,13 +1,14 @@
+"use strict";
+
 process.env.NODE_ENV = 'production';
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var config = require('../config');
+var config = require('./config');
 var routes = require('./routes');
 var request_logger = require('./middleware/req_logger');
 var session_manager = require('./middleware/session_manager');
 var cookieParser = require('cookie-parser');
-
 var app = express();
 
 // uses x-www-form-urlencoded
@@ -37,6 +38,6 @@ if (config.uselog){
 // mount routes
 app.use(routes);
 
-app.listen(process.env.PORT || config.port, /* config.host, */ () => {
+app.listen(config.port, config.host, () => {
     console.log(`API started on  ${config.host}:${config.port}`);
 });

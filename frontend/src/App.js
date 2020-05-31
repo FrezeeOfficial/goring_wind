@@ -11,8 +11,7 @@ import HomePage from './pages/HomePage';
 import Background from './components/background';
 import { ThemeProvider } from 'styled-components';
 import { DynamicStyles } from './components/DynamicStyles';
-import { Default, Morning, Midday, Evening } from './components/themes';
-
+import { Default, Morning, Midday, Evening } from './components/themes'; 
 
 class App extends Component {
   
@@ -35,7 +34,7 @@ class App extends Component {
     var d = new Date();
     var n = d.getHours();
 
-     if (n < 12) {
+    if (n < 12) {
       this.setState({theme: Morning})
      } if (n > 12) {
       this.setState({theme: Midday})
@@ -44,6 +43,8 @@ class App extends Component {
      } else {
       this.setState({theme: Default})
      }
+     
+     this.setState({theme: Evening})
 
   }
 

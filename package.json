@@ -15,11 +15,11 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "file-system": "^2.2.2",
+    "greenlock-express": "^4.0.3",
     "nodemon": "^2.0.2",
     "styled-components": "^5.1.1"
   },
   "engines": {
     "node": "10.15.3"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }

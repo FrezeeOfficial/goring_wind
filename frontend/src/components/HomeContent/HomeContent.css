@@ -171,3 +171,8 @@
         display: none;
     }
 }
+
+.wind-arrow-svg { 
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}

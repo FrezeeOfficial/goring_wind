@@ -27,3 +27,16 @@
 .leaflet-popup-content a {
     display: block;
 }
+
+.error-center {
+    display: flex;
+    margin: 0 auto;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.error-center > a {
+    margin: 0 auto;
+    padding-top: 30%;
+}

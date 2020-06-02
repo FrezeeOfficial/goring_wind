@@ -38,15 +38,12 @@ class App extends Component {
       this.setState({theme: Morning})
      } if (n > 12) {
       this.setState({theme: Midday})
-     } if ( n >= 20) {
+     } if ( n > 20) {
       this.setState({theme: Evening})
      } else {
       this.setState({theme: Default})
      }
-     
-     this.setState({theme: Evening})
-
-  }
+}
 
   componentDidMount() {
       this.setState({isLoaded: true});

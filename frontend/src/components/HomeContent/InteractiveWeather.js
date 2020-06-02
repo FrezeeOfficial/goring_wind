@@ -42,7 +42,11 @@ class InteractiveWeather extends Component {
 
     render() {
         const stamenTonerTiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        const stamenTonerAttr = '&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors';
+        const stamenTonerAttr = '&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> & <a href=&quot;http://C6100M1.FRZE.NET/;>C6100M1.FRZE.NET</a> contributors';
+
+        /* 
+            C6100 Api will work by getting wind forecast data and converting it into tiles with a colour gradient and add as an overlay on top of openstreetmap
+        */
 
         return (
                 <Map
@@ -68,8 +72,26 @@ class InteractiveWeather extends Component {
                     > 
                     
                     <Popup>
-                        <a href="goringwind.uk">Website Link</a>
-                        {data.all.direction}, {data.all.speed} Kt
+                        <div className="wind-popup">
+                            <div class="wind-popup-header">
+                                <h1>GORING STATION</h1>
+                                <h2>OWNED BY GW</h2>
+                            </div>
+                            <div class="wind-popup-body">
+                                <ul>
+                                    <li>WIND SPEED: 30MPH</li>
+                                    <li>WIND DIRECTION: WSW</li>
+                                    <li>WIND GUST: 40MPH</li>
+                                    <br></br>
+                                    <li>TIDE: 1.74M</li>
+                                    <li>SWELL: 1.78M</li>
+                                </ul>
+                                <div className="wind-popup-body-overall">
+                                    <a>OK</a>
+                                    <span>Recommended: Advanced+</span>
+                                </div>
+                            </div>
+                        </div>
                     </Popup>
                     </Marker>
                 )}

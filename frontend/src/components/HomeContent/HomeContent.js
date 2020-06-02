@@ -30,7 +30,6 @@ constructor(props){
         this.setState({failure: {display: "true", code: code, message: message}})
         setTimeout(() => { this.setState({failure: {display: "false"}}) }, time);
     }
-
     componentDidMount() {  
         this.displayError("0x00", "Any data presented is false during the development phase of this, do not use it for justification for kitesurfing", 3000);
         this.getTideData();     
@@ -40,7 +39,7 @@ constructor(props){
         setInterval(this.getWindData.bind(this), 5000);
     }
 
-    getWindData() {
+    getWindData = () => {
     const t_wind = [];
     const xhr = new XMLHttpRequest();
 
@@ -108,6 +107,7 @@ constructor(props){
     }
 
     render(){
+        this.getWindData();
         if (this.state.isLoaded) {    
             var { wind ,tide} = this.state
 
@@ -155,9 +155,19 @@ constructor(props){
             return(
               <div className="error-modal">
                   <div className="error-modal-inner">
-                      <span className="oops-error">Oops,</span>
-                      <span>Something went wrong. Try again?</span>
-                      <button>TRY AGAIN</button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98">
+                        <g id="Group_11" data-name="Group 11" transform="translate(-863 -323)">
+                        <circle id="Ellipse_2" data-name="Ellipse 2" cx="49" cy="49" r="49" transform="translate(863 323)" fill="#f1f2f3"/>
+                        <line id="Line_32" data-name="Line 32" x2="45" y2="45" transform="translate(890.5 350.5)" fill="none" stroke="#e12c2c" stroke-width="2"/>
+                        <line id="Line_33" data-name="Line 33" y1="45" x2="45" transform="translate(890.5 350.5)" fill="none" stroke="#e12c2c" stroke-width="2"/>
+                        </g>
+                    </svg>
+
+                      <span className="oops-error">Whoops</span>
+                      <span>Something isn't working. Please try again later</span>
+<br></br>
+                      <span className="small-text">Error Code: #77123</span>
+                      <span className="small-text">Failure Point: API</span>
                   </div>
               </div>
             )

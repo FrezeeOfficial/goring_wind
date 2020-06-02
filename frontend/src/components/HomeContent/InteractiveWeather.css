@@ -40,3 +40,33 @@
     margin: 0 auto;
     padding-top: 30%;
 }
+
+.wind-popup {
+    width: 200px;
+    height: auto;
+    display: block;
+    align-items: center;
+}
+
+.wind-popup-header {
+    display: block;
+}
+
+.wind-popup-header > h1 {
+    margin: 0 auto ;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.wind-popup-header > h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+.wind-popup-body > ul {
+    list-style: none;
+}

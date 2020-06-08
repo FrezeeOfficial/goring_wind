@@ -58,6 +58,12 @@ class InteractiveWeather extends Component {
                     url={stamenTonerTiles}
                 />
                 
+                <Control>
+                    <div className="control-bar">
+                        Alpha Feature
+                    </div>
+                </Control>
+                
                 {this.state.markers.map((data, idx) => 
                     <Marker 
                         icon={new L.Icon({

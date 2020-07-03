@@ -1,0 +1,3 @@
+when making the heat map: take wind predictions and split a tile into an array of small chunks, then colour it based on the wind productions. Use c++ because its fast as fuck
+and good practice for system development. The heatmap api will be deployed on C6100M1 machine as a microservice on the main api. If high traffic, move to C6100M2 because it has 
+a larger ram size for caching request data

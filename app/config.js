@@ -1,6 +1,6 @@
 const config = {
     usetokens: false,
-    uselog: true,
+    uselog: false,
     production: false,
     https: true,
     port: 5000,

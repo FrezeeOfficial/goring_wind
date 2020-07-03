@@ -20,17 +20,49 @@ class InteractiveWeather extends Component {
     
     componentDidMount() {
         this.updateMarkers();
+   
+    }
+
+    evalutate_locaation(data){
+        var c;
+        var s;
+
+        if (data.speed > 30) {
+            c  = "High Winds"
+            s = "Advanced+"
+        } if (data.speed < 30 ){
+            c  = "Medium Winds"
+            s = "Intermediate"
+        } if (data.speed < 15 ){
+            c  = "Safe Winds"
+            s = "Safe for most"
+        }
+
+        return (
+            {
+                "conditions": c,
+                "skill_level": s
+            }
+        )
     }
   
     updateMarkers() {
+        console.log("running")
         for (var i = 0; i < this.state.wind.length; i++) {
-            this.state.markers.push( { 
+            if (this.state.wind[i].status != "running") {
+
+            } else {
+
+                var joined = this.state.markers.concat({ 
                 position: [
                 this.state.wind[i].position[0],
                 this.state.wind[i].position[1]
                 ],
-                all: this.state.wind[i]
+                all: this.state.wind[i],
+                evalutation: this.evalutate_locaation(this.state.wind[i])
             });
+                this.setState({ markers: joined })
+            }
         }        
     }
 
@@ -74,21 +106,23 @@ class InteractiveWeather extends Component {
                     <Popup>
                         <div className="wind-popup">
                             <div class="wind-popup-header">
-                                <h1>GORING STATION</h1>
+                                <h1>{data.all.location}</h1>
                                 <h2>OWNED BY GW</h2>
                             </div>
                             <div class="wind-popup-body">
                                 <ul>
-                                    <li>WIND SPEED: 30MPH</li>
-                                    <li>WIND DIRECTION: WSW</li>
-                                    <li>WIND GUST: 40MPH</li>
+                                    <li>WIND SPEED: {data.all.speed} KN</li>
+                                    <li>WIND DIRECTION: {data.all.direction}</li>
+                                    <li>WIND GUST: UNKNOWN</li>
                                     <br></br>
-                                    <li>TIDE: 1.74M</li>
-                                    <li>SWELL: 1.78M</li>
+                                    <li>TIDE: UNKNOWN</li>
+                                    <li>SWELL: UNKNOWN</li>
                                 </ul>
-                                <div className="wind-popup-body-overall">
-                                    <a>OK</a>
-                                    <span>Recommended: Advanced+</span>
+                                <div className="wind-popup-body wind-popup-body-overall">
+                                <ul>
+                                    <li>Skill: {data.evalutation.skill_level}</li>
+                                    <li>Conditions: {data.evalutation.conditions}</li>
+                                </ul>
                                 </div>
                             </div>
                         </div>

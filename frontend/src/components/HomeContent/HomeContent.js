@@ -51,6 +51,7 @@ constructor(props){
             for (var i = 0; i < data.length; i++) {
                 t_wind.push({
                     name: data[i].name,
+                    status: data[i].status,
                     location: data[i].location,
                     distance: data[i].distance,
                     speed: data[i].speed,
@@ -71,10 +72,12 @@ constructor(props){
         } else {
             // failed
             this.displayError("0x01", "failed to retrieve wind data", 5000);
+
+
         }
     };
 
-    xhr.open('POST', 'http://192.168.1.3:5000/weather/getCurrent?type=wind');
+    xhr.open('POST', 'http://localhost:5000/weather/getCurrent?type=wind');
 
     xhr.send();
     }
@@ -101,7 +104,7 @@ constructor(props){
             }
         };
     
-        xhr.open('POST', 'http://192.168.1.3:5000/weather/getCurrent?type=tide');
+        xhr.open('POST', 'http://localhost:5000/weather/getCurrent?type=tide');
     
         xhr.send();
     }
@@ -113,7 +116,7 @@ constructor(props){
 
             var Cards = (                                    
                 wind.map((row) => {
-                    return (<WindCard StationName={row.name} StationLocation={row.location} StationDistance={row.distance} CurrentSpeed={row.speed} Direction={row.direction} Bearing={row.bearing} key={row.key}/>)
+                    return (<WindCard StationName={row.name} Status={row.status} StationLocation={row.location} StationDistance={row.distance} CurrentSpeed={row.speed} Direction={row.direction} Bearing={row.bearing} key={row.key}/>)
                 })
             )
 

@@ -1,5 +1,5 @@
 const config = {
-    log: true,
+    log: false,
     log_location: './log.json'
 };
 

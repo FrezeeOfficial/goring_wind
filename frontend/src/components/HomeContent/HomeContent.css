@@ -49,6 +49,15 @@
     -moz-box-shadow: 5px 5px 0px 1px rgba(0,151,230,1);
     box-shadow: 5px 5px 0px 1px rgba(0,151,230,1);
 }
+
+.card_override_red {
+    opacity: 0.5;
+    background-color: rgba(231, 76, 60, 1) !important;
+    -webkit-box-shadow: 5px 5px 0px 1px rgba(192, 57, 43, 1) !important;
+    -moz-box-shadow: 5px 5px 0px 1px rgba(192, 57, 43, 1) !important;
+    box-shadow: 5px 5px 0px 1px rgba(192, 57, 43, 1) !important;
+}
+
 .orange {
     background-color: #FBC531;
     -webkit-box-shadow: 5px 5px 0px 1px #E1B12C;
@@ -175,4 +184,7 @@
 .wind-arrow-svg { 
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+.wind-question-mark {
+    
 }

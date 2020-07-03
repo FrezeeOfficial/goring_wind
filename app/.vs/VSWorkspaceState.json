@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\actions",
+    "\\middleware\\req_logger",
+    "\\routes",
+    "\\routes\\weather"
+  ],
+  "SelectedNode": "\\routes\\weather\\index.js",
+  "PreviewInSolutionExplorer": false
+}

@@ -16,31 +16,31 @@ function getCurrentWind() {
         key: 0
     })
 
-    // data.push({
-    //     name: "WORTHING",
-    //     status: "down",
-    //     location: "Worthing",
-    //     distance: "0.8",
-    //     speed: "39",
-    //     direction: "WSW",
-    //     bearing: "225",
-    //     long: -0.405974,
-    //     lat: 50.805921,
-    //     key: 1
-    // })
+    data.push({
+        name: "WORTHING",
+        status: "down",
+        location: "Worthing",
+        distance: "0.8",
+        speed: "39",
+        direction: "WSW",
+        bearing: "225",
+        long: -0.405974,
+        lat: 50.805921,
+        key: 1
+    })
 
-    // data.push({
-    //     name: "LANCING",
-    //     status: "down",
-    //     location: "Lancing",
-    //     distance: "6.6",
-    //     speed: "38",
-    //     direction: "ESE",
-    //     bearing: "115",
-    //     long: -0.324343,
-    //     lat: 50.819954,
-    //     key: 2
-    // })
+    data.push({
+        name: "LANCING",
+        status: "down",
+        location: "Lancing",
+        distance: "6.6",
+        speed: "38",
+        direction: "ESE",
+        bearing: "115",
+        long: -0.324343,
+        lat: 50.819954,
+        key: 2
+    })
 
     return(data)
 }
